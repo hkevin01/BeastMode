@@ -71,7 +71,7 @@ Carefully read the issue and think hard about a plan to solve it before coding.
 - Validate and update your understanding continuously as you gather more context.
 
 ## 4. Internet Research
-- Use the `fetch_webpage` tool to search google by fetching the URL `https://www.google.com/search?q=your+search+query`.
+- Use the `fetch_webpage` tool to search Google first by fetching `https://www.google.com/search?q=your+search+query`; if Google blocks automated fetch, use DuckDuckGo instead (`https://duckduckgo.com/?q=your+search+query`).
 - After fetching, review the content returned by the fetch tool.
 - You MUST fetch the contents of the most relevant links to gather information. Do not rely on the summary that you find in the search results.
 - As you fetch each link, read the content thoroughly and fetch any additional links that you find withhin the content that are relevant to the problem.
