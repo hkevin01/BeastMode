@@ -7,18 +7,28 @@ This document catalogs all available agent modes in the BeastMode repository. Ea
 ```
 modes/
 ├── automated-reasoning/           # General-purpose autonomous problem solving
-│   ├── primary-solver.agent.md   # Modern VS Code agent format
-│   ├── profile.md                # Profile content/configuration
-│   └── legacy-format.chatmode.md # Legacy format for backward compatibility
+│   ├── primary-solver.agent.md
+│   ├── profile.md
+│   ├── legacy-format.chatmode.md
+│   ├── beastmode_kevin.agent.md   # Primary Beast Mode agent (modern format)
+│   ├── beastmode_kevin.md         # Profile content variant
+│   ├── Beast Mode.chatmode.md     # Legacy format variant
+│   └── README.md
 │
 ├── systemic-risk-analysis/        # Quantitative analysis of complex systems
-│   └── accountability-analyst.agent.md  # Corruption modeling & accountability analysis
+│   ├── accountability-analyst.agent.md
+│   └── README.md
 │
 ├── documentation-integrity/       # Technical documentation auditing
-│   └── code-truth-auditor.agent.md     # Code-traceable documentation verification
+│   ├── code-truth-auditor.agent.md
+│   └── README.md
+│
+├── forensic-analysis/             # Detailed investigation and evidence-based analysis
+│   ├── code-forensics-specialist.agent.md
+│   └── README.md
 │
 └── product-documentation/         # Product-specific documentation review
-    └── README.md                  # Placeholder for product-specific agents
+    └── README.md
 ```
 
 ---
