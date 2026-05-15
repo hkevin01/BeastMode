@@ -14,6 +14,26 @@ modes/
 │   ├── legacy-format.chatmode.md # Legacy format for backward compatibility
 │   └── README.md
 │
+├── code-analysis/                 # Multi-dimensional code review
+│   ├── comprehensive-reviewer.agent.md
+│   └── README.md
+│
+├── performance-optimization/      # Efficiency, scalability, bottleneck analysis
+│   ├── performance-optimizer.agent.md
+│   └── README.md
+│
+├── legacy-modernization/          # Zero-downtime legacy system modernization
+│   ├── legacy-modernizer.agent.md
+│   └── README.md
+│
+├── test-automation/               # Test strategy and automation architecture
+│   ├── test-specialist.agent.md
+│   └── README.md
+│
+├── architecture-design/           # System architecture and microservices
+│   ├── architect.agent.md
+│   └── README.md
+│
 ├── systemic-risk-analysis/        # Quantitative analysis of complex systems
 │   ├── conpattern-accountability.agent.md
 │   └── README.md
@@ -24,6 +44,10 @@ modes/
 │
 ├── forensic-analysis/             # Detailed investigation and evidence-based analysis
 │   ├── code-forensics-specialist.agent.md
+│   └── README.md
+│
+├── readme-documentation/          # README creation and enhancement
+│   ├── readme-enhancer.agent.md
 │   └── README.md
 │
 └── product-documentation/         # Product-specific documentation review
