@@ -7,20 +7,19 @@ This document catalogs all available agent modes in the BeastMode repository. Ea
 ```
 modes/
 ├── automated-reasoning/           # General-purpose autonomous problem solving
-│   ├── primary-solver.agent.md
-│   ├── profile.md
-│   ├── legacy-format.chatmode.md
-│   ├── beastmode_kevin.agent.md   # Primary Beast Mode agent (modern format)
-│   ├── beastmode_kevin.md         # Profile content variant
-│   ├── Beast Mode.chatmode.md     # Legacy format variant
+│   ├── primary-solver.agent.md   # Modern VS Code agent format
+│   ├── beastmode_kevin.agent.md  # Primary Beast Mode agent
+│   ├── beastmode_kevin.md        # Profile content variant
+│   ├── profile.md                # Profile configuration
+│   ├── legacy-format.chatmode.md # Legacy format for backward compatibility
 │   └── README.md
 │
 ├── systemic-risk-analysis/        # Quantitative analysis of complex systems
-│   ├── accountability-analyst.agent.md
+│   ├── conpattern-accountability.agent.md
 │   └── README.md
 │
 ├── documentation-integrity/       # Technical documentation auditing
-│   ├── code-truth-auditor.agent.md
+│   ├── readme-code-truth.agent.md
 │   └── README.md
 │
 ├── forensic-analysis/             # Detailed investigation and evidence-based analysis
@@ -68,7 +67,9 @@ modes/
 
 **Purpose:** Quantitative analysis of systemic corruption, accountability cascades, and evidence-based risk modeling.
 
-**File:** `accountability-analyst.agent.md`
+**File:** `conpattern-accountability.agent.md`
+
+**Name:** ConPattern Accountability Analyst
 
 **Target Audience:** Policy researchers, risk analysts, accountability advocates.
 
@@ -95,9 +96,11 @@ modes/
 ### 3. Documentation Integrity
 **Location:** `/modes/documentation-integrity/`
 
-**Purpose:** Audit and rewrite documentation using code-traceable references and implementation-grounded analysis.
+**Purpose:** Audit and rewrite documentation using code-traceable references and implementation-grounded analysis. Specialized for README files and technical documentation.
 
-**File:** `code-truth-auditor.agent.md`
+**File:** `readme-code-truth.agent.md`
+
+**Name:** README Code Truth Auditor
 
 **Target Audience:** Documentation teams, technical writers, product engineers requiring code-synchronized documentation.
 
@@ -158,7 +161,58 @@ modes/
 
 ---
 
-### 4. Product Documentation
+### 4. Forensic Analysis
+**Location:** `/modes/forensic-analysis/`
+
+**Purpose:** Detailed investigation, trace analysis, and forensic evidence evaluation for security, performance, and correctness issues.
+
+**File:** `code-forensics-specialist.agent.md`
+
+**Target Audience:** Security researchers, code auditors, incident responders, compliance teams.
+
+**Key Capabilities:**
+- Evidence collection with exact code locations
+- Trace execution paths and call sequences
+- Impact assessment and dependency mapping
+- Root cause analysis (not just symptom identification)
+- Timeline reconstruction with git history
+- Vulnerability and risk quantification
+
+**Investigation Protocol:**
+1. **Evidence Collection** - Locate exact code with file paths and line numbers
+2. **Trace Execution** - Show complete call sequence and data flow
+3. **Impact Assessment** - Identify all affected components and scope
+4. **Root Cause Analysis** - Distinguish symptoms from underlying causes
+5. **Evidence Timeline** - Document when and why issue was introduced
+
+**Finding Documentation:**
+- Severity classification (Critical/High/Medium/Low)
+- Exact reproduction steps
+- All affected components inventory
+- Remediation roadmap with effort estimates
+- Test cases for verification
+
+**Confidence Marking:**
+- [UNCONFIRMED] - Suspected but not verified
+- [REQUIRES TESTING] - Needs test case verification
+- [ENVIRONMENTAL] - Specific to certain environments
+- [DESIGN ASSUMPTION] - Design choice, not a bug
+- [DOCUMENTATION GAP] - Working as intended, undocumented
+
+**Output Format:**
+- Executive summary with top findings by severity
+- Detailed findings with evidence sections
+- Affected components inventory table
+- Dependency map showing cascade impact
+- Remediation roadmap and test cases
+- References to commits and related issues
+
+**Tools Available:**
+- read, search, codebase, usages, changes, web, fetch
+
+---
+
+### 5. Product Documentation
 **Location:** `/modes/product-documentation/`
 
 **Purpose:** Specialized agent modes for product-specific technical documentation review.
