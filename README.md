@@ -50,7 +50,7 @@ The repository is for developers who want repeatable agent behavior across proje
 | 🤖 | Shared BeastMode profile | Maintains one central instruction set for Copilot custom agents. | High | ✅ Stable |
 | 🧭 | Cross-project discovery | Supports loading custom agent files from a shared path in project settings. | High | ✅ Stable |
 | 🧰 | Expanded tool set | Includes modern agent toolsets (`agent`, `edit`, `execute`, `read`, `web`, and more). | High | ✅ Stable |
-| 📚 | Dual format compatibility | Keeps both legacy chatmode and modern `.agent.md` representations. | Medium | ✅ Stable |
+| 📚 | Dual profile variants | Keeps modern `.agent.md` agent files plus a canonical `.md` profile variant. | Medium | ✅ Stable |
 | 🛡️ | GitHub standards baseline | Adds standard community files for contributions, security, and governance. | Medium | ✅ Stable |
 
 Additional highlights:
@@ -130,11 +130,11 @@ This configuration exists to eliminate that inconsistency by moving expectations
 This repository acts as the authoritative source for the BeastMode profile family:
 
 - `beastmode_kevin.agent.md`
-  modern custom agent definition consumed by current VS Code custom-agent discovery.
+  primary modern custom-agent file consumed by current VS Code custom-agent discovery.
 - `beastmode_kevin.md`
-  canonical content variant used as the primary profile document.
-- `Beast Mode.chatmode.md`
-  compatibility variant for legacy chatmode-style workflows.
+  canonical content variant used as the primary readable profile reference.
+- `.github/agents/*.agent.md`
+  curated discovery set that allows many projects to resolve the same shared agent definitions.
 
 It also includes governance and collaboration scaffolding so the profile can be maintained safely as a team artifact:
 
@@ -145,12 +145,12 @@ It also includes governance and collaboration scaffolding so the profile can be 
 
 Operationally, this means you can update behavior once in this repo and have projects discover the same agent via `chat.agentFilesLocations`, rather than copying and editing profile text in every workspace.
 
-| <sub>Repository Asset</sub> | <sub>Role In This Repo</sub> | <sub>Why It Exists Here</sub> |
-|---|---|---|
-| <sub>`beastmode_kevin.agent.md`</sub> | <sub>Primary modern custom-agent file</sub> | <sub>Current VS Code discovery compatibility</sub> |
-| <sub>`beastmode_kevin.md`</sub> | <sub>Canonical profile content variant</sub> | <sub>Readable reference and portability</sub> |
-| <sub>`Beast Mode.chatmode.md`</sub> | <sub>Legacy compatibility profile</sub> | <sub>Backward support for existing workflows</sub> |
-| <sub>GitHub standards files</sub> | <sub>Process governance and hygiene</sub> | <sub>Team-scale maintainability and review quality</sub> |
+| <sub>Repository Asset</sub> | <sub>Repository Path</sub> | <sub>Role In This Repo</sub> | <sub>Why It Exists Here</sub> |
+|---|---|---|---|
+| <sub>`beastmode_kevin.agent.md`</sub> | <sub>`.github/agents/beastmode_kevin.agent.md`</sub> | <sub>Primary modern custom-agent file</sub> | <sub>Current VS Code discovery compatibility</sub> |
+| <sub>`beastmode_kevin.md`</sub> | <sub>`modes/automated-reasoning/beastmode_kevin.md`</sub> | <sub>Canonical profile content variant</sub> | <sub>Readable reference and portability</sub> |
+| <sub>`Beast Mode.chatmode.md`</sub> | <sub>Not tracked in current main branch</sub> | <sub>Legacy compatibility profile</sub> | <sub>Backward support for existing workflows when maintained downstream</sub> |
+| <sub>GitHub standards files</sub> | <sub>`.github/`, `CODE_OF_CONDUCT.md`, `CONTRIBUTING.md`, `SECURITY.md`</sub> | <sub>Process governance and hygiene</sub> | <sub>Team-scale maintainability and review quality</sub> |
 
 <p align="right">(<a href="#top">back to top ↑</a>)</p>
 
@@ -179,9 +179,9 @@ Current core files in this repository:
 
 | Path | Purpose |
 |------|---------|
-| `Beast Mode.chatmode.md` | Legacy custom chat mode format retained for compatibility. |
-| `beastmode_kevin.md` | Primary Beast Mode profile content. |
-| `beastmode_kevin.agent.md` | Custom agent format for modern VS Code discovery. |
+| `.github/agents/` | Workspace-discoverable custom agent files for VS Code Copilot chat. |
+| `modes/automated-reasoning/beastmode_kevin.md` | Canonical Beast Mode profile content variant. |
+| `modes/automated-reasoning/beastmode_kevin.agent.md` | Source modern custom-agent definition in mode folder. |
 | `README.md` | Project documentation. |
 | `.gitignore` | Ignore patterns for editor, build, env, and cache artifacts. |
 | `.gitattributes` | Line-ending normalization. |
@@ -205,9 +205,9 @@ Current core files in this repository:
 
 ```mermaid
 flowchart TD
-  A[BeastMode Repository] --> B[beastmode_kevin.agent.md]
-  A --> C[beastmode_kevin.md]
-  A --> D[Beast Mode.chatmode.md]
+  A[BeastMode Repository] --> B[.github/agents/beastmode_kevin.agent.md]
+  A --> C[modes/automated-reasoning/beastmode_kevin.md]
+  A --> D[.github/agents/*.agent.md]
   B --> E[Project .vscode settings]
   C --> E
   D --> E
@@ -286,9 +286,9 @@ ls -1
 ```
 
 Expected key files include:
-- `beastmode_kevin.agent.md`
-- `beastmode_kevin.md`
-- `Beast Mode.chatmode.md`
+- `.github/agents/beastmode_kevin.agent.md`
+- `modes/automated-reasoning/beastmode_kevin.md`
+- `.github/agents/primary-solver.agent.md`
 
 <p align="right">(<a href="#top">back to top ↑</a>)</p>
 
@@ -298,16 +298,19 @@ Add this setting in each project workspace:
 
 ```json
 {
-  "chat.agentFilesLocations": ["/home/kevin/Projects/BeastMode"]
+  "chat.agentFilesLocations": [
+    "/home/kevin/Projects/BeastMode/.github/agents",
+    "/home/kevin/Projects/BeastMode"
+  ]
 }
 ```
 
 Then open chat and select the BeastMode custom agent from the agent picker.
 
 <details>
-<summary>Why both .agent.md and .chatmode.md are present</summary>
+<summary>Why both .agent.md and canonical .md variants are present</summary>
 
-The `.agent.md` file is the modern custom agent format recognized by current VS Code customizations. The `.chatmode.md` file is retained for compatibility with older workflows and references.
+The `.agent.md` files are the modern custom agent format recognized by current VS Code customizations. The `beastmode_kevin.md` profile remains as a canonical readable content variant for portability and review workflows.
 
 </details>
 
