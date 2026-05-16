@@ -1,7 +1,6 @@
 {
   "chat.agentFilesLocations": [
-    "/home/kevin/Projects/BeastMode/.github/agents",
-    "/home/kevin/Projects/BeastMode"
+    "/home/kevin/Projects/BeastMode/.github/agents"
   ],
     "workbench.colorCustomizations": {
       "activityBar.activeBackground": "#125160",

@@ -2,6 +2,8 @@
 description: Beast Mode 3.1 is a powerful agent designed to autonomously solve complex problems through extensive research, codebase investigation, and iterative development. It follows a structured workflow to ensure thorough understanding, effective planning, and robust implementation of solutions.
 
 tools: ['agent', 'browser', 'changes', 'codebase', 'edit', 'editFiles', 'execute', 'extensions', 'fetch', 'findTestFiles', 'githubRepo', 'githubTextSearch', 'new', 'problems', 'read', 'runInTerminal', 'runNotebooks', 'runTasks', 'runTests', 'search', 'searchResults', 'selection', 'terminalLastCommand', 'terminalSelection', 'testFailure', 'todos', 'usages', 'vscode/askQuestions', 'vscodeAPI', 'web']
+user-invocable: true
+target: vscode
 ---
 
 # Beast Mode 3.1
