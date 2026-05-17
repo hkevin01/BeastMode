@@ -294,18 +294,99 @@ Expected key files include:
 
 ## Using BeastMode Across Projects
 
-Add this setting in each project workspace:
+### For agents to appear in ALL projects (recommended):
+
+Configure user-level settings (`~/.config/Code/User/settings.json`) with **absolute path**:
+
+```json
+{
+  "chat.agentFilesLocations": [
+    "/home/kevin/Projects/BeastMode/.github/agents"
+  ]
+}
+```
+
+**Critical:** 
+- Use **array format** (not object `{...}`)
+- Use **absolute path** (not relative `.github/agents`)
+- Point to BeastMode agents folder
+- This applies to all projects automatically
+
+### For project-specific overrides (optional):
+
+In a specific project's `.vscode/settings.json`:
 
 ```json
 {
   "chat.agentFilesLocations": [
     "/home/kevin/Projects/BeastMode/.github/agents",
-    "/home/kevin/Projects/BeastMode"
+    "/path/to/other/agents"
   ]
 }
 ```
 
-Then open chat and select the BeastMode custom agent from the agent picker.
+Then open Copilot Chat and select a custom agent from the agent picker.
+
+<details>
+<summary>Custom Agent Discovery - Troubleshooting</summary>
+
+If custom agents in `.github/agents/` are not appearing in the VS Code Copilot Chat agent picker:
+
+**Root Causes:**
+- Cache persistence preventing fresh agent discovery
+- File parsing issues with YAML frontmatter
+- Wrong settings path format (relative instead of absolute, or object instead of array)
+- Incorrect path format for cross-project discovery
+
+**Solution Steps:**
+1. **Fix user settings** (`~/.config/Code/User/settings.json`):
+   ```json
+   "chat.agentFilesLocations": [
+       "/home/kevin/Projects/BeastMode/.github/agents"
+   ]
+   ```
+   - MUST be array format `[...]` not object `{...}`
+   - MUST be absolute path (not relative)
+
+2. **Clear agent cache**: `rm -rf ~/.config/Code/User/globalStorage/github.copilot-chat`
+
+3. **Verify agent YAML frontmatter** - Each agent must have valid format:
+   ```yaml
+   ---
+   name: Agent Display Name
+   description: Clear, concise description
+   tools: ['read', 'search', 'codebase', 'editFiles']
+   user-invocable: true
+   target: vscode
+   ---
+   ```
+
+4. **Create agents via terminal** (avoids editor artifacts):
+   ```bash
+   cat > .github/agents/my-agent.agent.md << 'EOF'
+   ---
+   name: My Agent
+   description: Agent description
+   tools: ['read', 'search', 'codebase', 'editFiles']
+   user-invocable: true
+   target: vscode
+   ---
+   Agent behavior instructions here.
+   EOF
+   ```
+
+5. **Open fresh VS Code window**: `code -n /path/to/project`
+
+**Why This Works:**
+- Absolute path ensures agents are discoverable from any project
+- Array format is correct for VS Code agent discovery settings
+- Terminal heredoc creation ensures pristine YAML parsing without editor artifacts
+- Cache clearing forces re-discovery of agent files
+- Fresh window reload triggers agent picker refresh
+
+**Result:** All agents in `.github/agents/` appear in chat agent picker across all projects after these steps.
+
+</details>
 
 <details>
 <summary>Why both .agent.md and canonical .md variants are present</summary>
