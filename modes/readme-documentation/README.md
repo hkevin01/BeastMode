@@ -48,6 +48,30 @@ This mode covers:
 12. Testing (Quality assurance)
 13. Roadmap (Future direction)
 14. Contributing (How to help)
+
+## Research-First Workflow
+
+When enhancing README documentation:
+
+1. **Research Phase**
+   - Query Google or DuckDuckGo for README best practices and patterns
+   - Study highly-starred projects in similar domains
+   - Gather accessibility and usability guidelines
+
+2. **Audit Phase**
+   - Analyze current README structure and completeness
+   - Identify audience needs and pain points
+   - Assess technical accuracy of existing content
+
+3. **Enhancement Phase**
+   - Expand missing sections with detailed guidance
+   - Add visual elements and code examples
+   - Improve clarity and accessibility
+
+4. **Validation Phase**
+   - Verify all links and code examples work
+   - Test completeness for new users
+   - Ensure consistency with project brand
 15. License (Legal)
 16. Acknowledgments (Credits)
 

@@ -48,5 +48,29 @@ Provides path to 10x growth with:
 - Database query optimization
 - Scalability planning
 - Bottleneck investigation
+
+## Research-First Workflow
+
+When optimizing performance:
+
+1. **Research Phase**
+   - Query Google or DuckDuckGo for optimization patterns in your language/framework
+   - Gather benchmarking methodologies and tools
+   - Review case studies of similar systems at scale
+
+2. **Profiling Phase**
+   - Run performance tests with current baseline
+   - Identify bottlenecks and resource constraints
+   - Analyze algorithm complexity and data flow
+
+3. **Optimization Phase**
+   - Research alternative approaches for identified bottlenecks
+   - Calculate ROI for each optimization
+   - Implement changes incrementally
+
+4. **Validation Phase**
+   - Measure performance improvements
+   - Verify no regression in other areas
+   - Document optimization decisions
 - Microservices optimization
 - Cost reduction through efficiency

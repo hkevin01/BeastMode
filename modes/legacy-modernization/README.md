@@ -49,6 +49,31 @@ All recommendations maintain:
 5. Failure Mode Analysis
 6. Knowledge Preservation Documentation
 
+## Research-First Workflow
+
+When planning modernization:
+
+1. **Research Phase**
+   - Query Google or DuckDuckGo for modernization strategies in your technology stack
+   - Gather current best practices and architecture patterns
+   - Review migration case studies and lessons learned
+
+2. **Assessment Phase**
+   - Audit current technology, security, and performance
+   - Document business logic and edge cases
+   - Map dependencies and risk areas
+
+3. **Planning Phase**
+   - Design modernization architecture
+   - Plan phased migration approach
+   - Identify rollback strategies and safety nets
+
+4. **Implementation Phase**
+   - Execute migration in phases
+   - Maintain zero-downtime availability
+   - Validate data integrity and feature compatibility
+   - Monitor and adjust based on real-world performance
+
 ## Use Cases
 
 - Legacy system modernization

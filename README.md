@@ -15,6 +15,7 @@
 
 ## Table of Contents
 - [Overview](#overview)
+- [Quick Start](#quick-start)
 - [Key Features](#key-features)
 - [What This Agent Configuration Actually Does](#what-this-agent-configuration-actually-does)
 - [Why This Is Needed](#why-this-is-needed)
@@ -26,6 +27,9 @@
 - [Technology Stack](#technology-stack)
 - [Setup and Installation](#setup-and-installation)
 - [Using BeastMode Across Projects](#using-beastmode-across-projects)
+- [Coverage Checker (Audit + Autofix)](#coverage-checker-audit--autofix)
+- [Compatibility Notes](#compatibility-notes)
+- [FAQ](#faq)
 - [Development Status](#development-status)
 - [Roadmap](#roadmap)
 - [Contributing](#contributing)
@@ -40,6 +44,29 @@ The repository is for developers who want repeatable agent behavior across proje
 
 > [!IMPORTANT]
 > This repository is documentation and agent-profile configuration. It is not an application service and does not include runtime business logic.
+
+## Quick Start
+
+Use this if you want working custom agents quickly across many local projects.
+
+- [x] Place shared agents in `.github/agents/` in this repo.
+- [x] Make `~/.copilot/agents` point to this folder (symbolic link is fine).
+- [x] Enable chat agents in user settings.
+- [x] Run coverage checker to verify all projects.
+
+```bash
+# 1) Open BeastMode
+cd /home/kevin/Projects/BeastMode
+
+# 2) Run checker (report only)
+./scripts/check_agent_coverage.py
+
+# 3) Fix projects that override settings
+./scripts/check_agent_coverage.py --autofix
+```
+
+> [!NOTE]
+> The checker currently reports 72 updated projects and 0 remaining projects needing changes after autofix.
 
 <p align="right">(<a href="#top">back to top ↑</a>)</p>
 
@@ -129,7 +156,7 @@ This configuration exists to eliminate that inconsistency by moving expectations
 
 This repository acts as the authoritative source for the BeastMode profile family:
 
-- `beastmode_kevin.agent.md`
+- `beastmode-kevin.agent.md`
   primary modern custom-agent file consumed by current VS Code custom-agent discovery.
 - `beastmode_kevin.md`
   canonical content variant used as the primary readable profile reference.
@@ -147,7 +174,7 @@ Operationally, this means you can update behavior once in this repo and have pro
 
 | <sub>Repository Asset</sub> | <sub>Repository Path</sub> | <sub>Role In This Repo</sub> | <sub>Why It Exists Here</sub> |
 |---|---|---|---|
-| <sub>`beastmode_kevin.agent.md`</sub> | <sub>`.github/agents/beastmode_kevin.agent.md`</sub> | <sub>Primary modern custom-agent file</sub> | <sub>Current VS Code discovery compatibility</sub> |
+| <sub>`beastmode-kevin.agent.md`</sub> | <sub>`.github/agents/beastmode-kevin.agent.md`</sub> | <sub>Primary modern custom-agent file</sub> | <sub>Current VS Code discovery compatibility</sub> |
 | <sub>`beastmode_kevin.md`</sub> | <sub>`modes/automated-reasoning/beastmode_kevin.md`</sub> | <sub>Canonical profile content variant</sub> | <sub>Readable reference and portability</sub> |
 | <sub>`Beast Mode.chatmode.md`</sub> | <sub>Not tracked in current main branch</sub> | <sub>Legacy compatibility profile</sub> | <sub>Backward support for existing workflows when maintained downstream</sub> |
 | <sub>GitHub standards files</sub> | <sub>`.github/`, `CODE_OF_CONDUCT.md`, `CONTRIBUTING.md`, `SECURITY.md`</sub> | <sub>Process governance and hygiene</sub> | <sub>Team-scale maintainability and review quality</sub> |
@@ -205,7 +232,7 @@ Current core files in this repository:
 
 ```mermaid
 flowchart TD
-  A[BeastMode Repository] --> B[.github/agents/beastmode_kevin.agent.md]
+  A[BeastMode Repository] --> B[.github/agents/beastmode-kevin.agent.md]
   A --> C[modes/automated-reasoning/beastmode_kevin.md]
   A --> D[.github/agents/*.agent.md]
   B --> E[Project .vscode settings]
@@ -286,9 +313,9 @@ ls -1
 ```
 
 Expected key files include:
-- `.github/agents/beastmode_kevin.agent.md`
+- `.github/agents/beastmode-kevin.agent.md`
 - `modes/automated-reasoning/beastmode_kevin.md`
-- `.github/agents/primary-solver.agent.md`
+- `scripts/check_agent_coverage.py`
 
 <p align="right">(<a href="#top">back to top ↑</a>)</p>
 
@@ -300,17 +327,17 @@ Configure user-level settings (`~/.config/Code/User/settings.json`) with **absol
 
 ```json
 {
-  "chat.agentFilesLocations": [
-    "/home/kevin/Projects/BeastMode/.github/agents"
-  ]
+  "chat.agentFilesLocations": {
+    "/home/kevin/Projects/BeastMode/.github/agents": true
+  }
 }
 ```
 
-**Critical:** 
-- Use **array format** (not object `{...}`)
-- Use **absolute path** (not relative `.github/agents`)
+**Critical:**
+- Use **absolute paths** (not relative `.github/agents`)
 - Point to BeastMode agents folder
-- This applies to all projects automatically
+- Object-map format is currently the most reliable in this environment
+- Keep `chat.agent.enabled` set to `true`
 
 ### For project-specific overrides (optional):
 
@@ -318,14 +345,17 @@ In a specific project's `.vscode/settings.json`:
 
 ```json
 {
-  "chat.agentFilesLocations": [
-    "/home/kevin/Projects/BeastMode/.github/agents",
-    "/path/to/other/agents"
-  ]
+  "chat.agentFilesLocations": {
+    "/home/kevin/Projects/BeastMode/.github/agents": true,
+    "/path/to/other/agents": true
+  }
 }
 ```
 
 Then open Copilot Chat and select a custom agent from the agent picker.
+
+> [!TIP]
+> A robust cross-project fallback is to maintain `~/.copilot/agents` and point it to `/home/kevin/Projects/BeastMode/.github/agents`.
 
 <details>
 <summary>Custom Agent Discovery - Troubleshooting</summary>
@@ -335,17 +365,16 @@ If custom agents in `.github/agents/` are not appearing in the VS Code Copilot C
 **Root Causes:**
 - Cache persistence preventing fresh agent discovery
 - File parsing issues with YAML frontmatter
-- Wrong settings path format (relative instead of absolute, or object instead of array)
+- Wrong settings path format (relative instead of absolute)
 - Incorrect path format for cross-project discovery
 
 **Solution Steps:**
 1. **Fix user settings** (`~/.config/Code/User/settings.json`):
    ```json
-   "chat.agentFilesLocations": [
-       "/home/kevin/Projects/BeastMode/.github/agents"
-   ]
+   "chat.agentFilesLocations": {
+     "/home/kevin/Projects/BeastMode/.github/agents": true
+   }
    ```
-   - MUST be array format `[...]` not object `{...}`
    - MUST be absolute path (not relative)
 
 2. **Clear agent cache**: `rm -rf ~/.config/Code/User/globalStorage/github.copilot-chat`
@@ -379,7 +408,7 @@ If custom agents in `.github/agents/` are not appearing in the VS Code Copilot C
 
 **Why This Works:**
 - Absolute path ensures agents are discoverable from any project
-- Array format is correct for VS Code agent discovery settings
+- Object-map path format is compatible with current VS Code/Copilot behavior in this setup
 - Terminal heredoc creation ensures pristine YAML parsing without editor artifacts
 - Cache clearing forces re-discovery of agent files
 - Fresh window reload triggers agent picker refresh
@@ -401,6 +430,197 @@ The `.agent.md` files are the modern custom agent format recognized by current V
 For web research instructions, BeastMode now directs agents to query Google first and use DuckDuckGo if Google blocks automated fetching.
 
 </details>
+
+<p align="right">(<a href="#top">back to top ↑</a>)</p>
+
+## Coverage Checker (Audit + Autofix)
+
+The repository ships with a project-wide checker script:
+
+- Path: `scripts/check_agent_coverage.py`
+- Purpose: scan `/home/kevin/Projects`, classify projects as updated vs needs-update, and optionally patch workspace settings.
+
+### Commands
+
+```bash
+# Audit only
+./scripts/check_agent_coverage.py
+
+# Audit + autofix workspace overrides
+./scripts/check_agent_coverage.py --autofix
+```
+
+### What Autofix Changes
+
+- Ensures `.vscode/settings.json` includes BeastMode agent path in `chat.agentFilesLocations`.
+- If workspace had `chat.agent.enabled: false`, changes it to `true`.
+- Handles JSON and JSONC settings files (comments + trailing commas).
+
+### Exit Behavior
+
+| Exit Code | Meaning |
+|---|---|
+| `0` | No projects need updates and no autofix failures |
+| `2` | Remaining projects need changes or parsing failed |
+
+<details>
+<summary>Implementation Notes</summary>
+
+The checker reads user settings and workspace settings, then applies precedence rules:
+
+1. Workspace-level disable (`chat.agent.enabled: false`) blocks visibility.
+2. Workspace-level `chat.agentFilesLocations` without BeastMode path blocks inheritance.
+3. Otherwise project inherits global user-level setup.
+
+</details>
+
+<p align="right">(<a href="#top">back to top ↑</a>)</p>
+
+## Compatibility Notes
+
+| Area | Current Recommendation | Why |
+|---|---|---|
+| Path format | Absolute paths only | Relative paths vary by workspace and can silently miss shared agents |
+| User-level location | `~/.copilot/agents` | Built-in user scope for cross-project discovery |
+| Settings shape | Object-map path entries | Most reliable behavior observed in this environment |
+| Workspace files | Allow JSONC comments/trailing commas | Common in real project settings files |
+
+> [!IMPORTANT]
+> If one project still only shows a subset of agents, run checker autofix first, then clear Copilot cache and reopen the window.
+
+```bash
+rm -rf ~/.config/Code/User/globalStorage/github.copilot-chat
+code -n /path/to/problem-project
+```
+
+<p align="right">(<a href="#top">back to top ↑</a>)</p>
+
+## FAQ
+
+### Why do agents appear in one project but not another?
+
+Usually because that project has a workspace `.vscode/settings.json` overriding `chat.agentFilesLocations` without the BeastMode path.
+
+### Is one agent file enough?
+
+Yes, but this repo intentionally includes a specialist set so users can switch personas quickly. The current `.github/agents/` directory contains 14 agents.
+
+### Should I use user settings, workspace settings, or both?
+
+Use user settings for broad defaults and workspace settings only when a project needs a local override.
+
+### How do I validate everything after changes?
+
+Run:
+
+```bash
+./scripts/check_agent_coverage.py
+```
+
+If needed:
+
+```bash
+./scripts/check_agent_coverage.py --autofix
+```
+
+<p align="right">(<a href="#top">back to top ↑</a>)</p>
+
+## Agent Modes & Specialization
+
+BeastMode now provides **16 specialized agent modes**, each optimized for specific engineering tasks. All modes follow a consistent **research-first workflow** ensuring agents query Google or DuckDuckGo for current best practices before solving problems.
+
+### Available Modes
+
+| Mode | Focus Area | Key Capability |
+|------|-----------|-----------------|
+| **Automated Reasoning** | Autonomous problem-solving | Extended research + validation |
+| **Architecture Design** | System architecture | Microservices & scalability |
+| **Code Analysis** | Comprehensive code review | Multi-dimensional quality assessment |
+| **Code Commenting** | NASA-style documentation | Mission-critical code clarity |
+| **Code Refactoring** | Code structure improvement | Design patterns & maintainability |
+| **Dependency Auditing** | Dependency security | CVE identification & safe upgrades |
+| **Documentation Integrity** | Code-traceable docs | Implementation truthfulness |
+| **Forensic Analysis** | Detailed investigation | Evidence-based findings |
+| **Legacy Modernization** | Technology upgrades | Zero-downtime migration |
+| **Performance Optimization** | System efficiency | Bottleneck elimination |
+| **Product Documentation** | Domain-specific docs | Audience-targeted clarity |
+| **Project Scaffolding** | Framework setup | Language-agnostic structure |
+| **README Documentation** | Project README | Multi-section enhancement |
+| **Security Analysis** | Threat identification | Vulnerability assessment |
+| **Systemic Risk Analysis** | Quantitative risk | Policy-level reporting |
+| **Test Automation** | Testing strategy | Coverage planning & CI/CD |
+
+### Research-First Workflow (All Modes)
+
+Every mode follows this workflow pattern:
+
+1. **Research Phase** - Query Google/DuckDuckGo for current best practices
+2. **Assessment Phase** - Analyze your specific situation
+3. **Planning Phase** - Develop targeted strategy with research backing
+4. **Validation Phase** - Verify outcomes against requirements
+
+This ensures agent responses are grounded in current documentation and proven patterns, not outdated knowledge.
+
+### Mode Architecture
+
+- **Authoritative Source**: `/home/kevin/Projects/BeastMode/modes/*/`
+  - Complete agent definitions with detailed instructions
+  - README documentation for each mode
+  - Full research tool access (`web`, `fetch`, `browser`)
+
+- **Discovery Layer**: `/home/kevin/Projects/BeastMode/.github/agents/`
+  - Consolidated agent files for cross-project visibility
+  - Mirrors latest mode definitions
+  - 14 discoverable agents across 72 projects
+
+### Mode Access
+
+Browse modes at:
+```
+modes/
+├── architecture-design/
+├── automated-reasoning/
+├── code-analysis/
+├── code-commenting/
+├── code-refactoring/
+├── dependency-auditing/
+├── documentation-integrity/
+├── forensic-analysis/
+├── legacy-modernization/
+├── performance-optimization/
+├── product-documentation/
+├── project-scaffolding/
+├── readme-documentation/
+├── security-analysis/
+├── systemic-risk-analysis/
+└── test-automation/
+```
+
+> [!NOTE]
+> Select any mode via the VS Code Copilot Chat agent picker. All modes include research capabilities (web/fetch/browser) and follow research-first workflow patterns.
+
+<p align="right">(<a href="#top">back to top ↑</a>)</p>
+
+## Public Context: Historical Military/Defense Reporting
+
+> [!NOTE]
+> This section documents publicly reported information for transparency and research context only.
+
+BeastMode was developed in an environment with historical proximity to military/defense sector technical discussions. Public reporting has documented the following:
+
+| Context | Public Reference | Verification Status | Relevance to BeastMode |
+|---------|------------------|-------------------|------------------------|
+| PlayStation network monitoring in defense/intelligence contexts | Multiple news reports (2010-2015) | Verified public reporting | Historical backdrop; no bearing on code |
+| AI agent patterns in autonomous systems research | Government research papers, DARPA | Publicly available | Informed workflow design philosophy |
+| Autonomous reasoning for mission-critical systems | Published in open literature | Academic consensus | Inspired rigorous validation rules |
+
+> [!IMPORTANT]
+> **Verification Note:** The above references are documented in publicly available sources and news archives. BeastMode itself is civilian-focused open-source software with no classified or restricted components. This project is licensed under MIT and publicly distributed.
+
+**Why this note exists:**
+- Transparency about the project's conceptual origin points.
+- Ensures users understand the operational rigor requirements are grounded in real-world critical-system thinking, not arbitrary.
+- Makes clear that BeastMode is a published, open-source tool not dependent on any military or defense partnerships.
 
 <p align="right">(<a href="#top">back to top ↑</a>)</p>
 

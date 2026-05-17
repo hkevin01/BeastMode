@@ -49,6 +49,31 @@ Four-phase approach:
 5. CI/CD Integration Guide
 6. Automation Best Practices Guide
 
+## Research-First Workflow
+
+When planning test automation:
+
+1. **Research Phase**
+   - Query Google or DuckDuckGo for testing best practices in your language/framework
+   - Gather test automation frameworks and tool comparisons
+   - Review industry coverage standards and test pyramid patterns
+
+2. **Assessment Phase**
+   - Analyze current test coverage and gaps
+   - Identify critical paths and high-risk areas
+   - Map dependencies and integration points
+
+3. **Planning Phase**
+   - Design test pyramid structure
+   - Select automation framework and tools
+   - Plan phased implementation roadmap
+
+4. **Implementation Phase**
+   - Build test suite incrementally
+   - Integrate with CI/CD pipeline
+   - Monitor coverage and regression detection
+   - Maintain and improve over time
+
 ## Use Cases
 
 - Test strategy planning

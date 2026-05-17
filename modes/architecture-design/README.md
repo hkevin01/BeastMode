@@ -48,6 +48,33 @@ Provides:
 
 Includes:
 - Failure mode analysis
+- High availability strategies
+- Disaster recovery planning
+- Fault isolation and circuit breakers
+
+## Research-First Workflow
+
+When analyzing architecture:
+
+1. **Research Phase**
+   - Query Google or DuckDuckGo for current architectural patterns in your domain
+   - Gather best practices from recent whitepapers and industry leaders
+   - Identify proven technologies for your scale requirements
+
+2. **Assessment Phase**
+   - Review your current system structure and dependencies
+   - Analyze bottlenecks and failure points
+   - Map data flows and service boundaries
+
+3. **Design Phase**
+   - Create target architecture diagrams
+   - Define service boundaries and contracts
+   - Plan migration phases if applicable
+
+4. **Validation Phase**
+   - Review designs against performance requirements
+   - Identify potential failure modes
+   - Validate technology choices against constraints
 - Detection and recovery strategies
 - Multi-region deployment options
 - Circuit breakers and graceful degradation

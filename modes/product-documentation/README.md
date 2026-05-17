@@ -29,3 +29,27 @@ Each agent should include:
 - Specific documentation rules and requirements
 - Requirements for implementation traceability
 - Output format specifications
+
+## Research-First Workflow
+
+When creating product documentation:
+
+1. **Research Phase**
+   - Query Google or DuckDuckGo for documentation best practices in your domain
+   - Gather user experience research and common pain points
+   - Review competitor and reference implementations
+
+2. **Code Understanding Phase**
+   - Analyze implementation architecture and behavior
+   - Trace complete user workflows through code
+   - Document all features and options
+
+3. **Documentation Phase**
+   - Create clear, audience-appropriate documentation
+   - Include code examples and use cases
+   - Ensure implementation traceability
+
+4. **Review Phase**
+   - Validate accuracy against implementation
+   - Test clarity with target audience feedback
+   - Ensure completeness of all features

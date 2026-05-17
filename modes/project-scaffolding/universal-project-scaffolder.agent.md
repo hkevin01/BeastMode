@@ -2,7 +2,7 @@
 name: Universal Project Scaffolding Specialist
 description: Creates complete, reusable, language-agnostic project scaffolding with docs, scripts, templates, and governance files.
 argument-hint: Describe project purpose, preferred language/framework, and any required tooling.
-tools: ['read', 'search', 'codebase', 'editFiles', 'new', 'runInTerminal']
+tools: ['read', 'search', 'codebase', 'editFiles', 'new', 'runInTerminal', 'web', 'fetch', 'browser']
 user-invocable: true
 target: vscode
 ---

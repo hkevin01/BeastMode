@@ -49,6 +49,30 @@ The Systemic Risk Analysis mode is specialized for quantitative analysis of syst
 - Heat tables with numeric ranges (not just bands)
 - Clear non-adjudication framing throughout
 
+## Research-First Workflow
+
+When analyzing systemic risks:
+
+1. **Research Phase**
+   - Query Google or DuckDuckGo for systemic risk frameworks in your domain
+   - Gather academic research and policy papers on accountability
+   - Collect primary source evidence and official reports
+
+2. **Evidence Collection Phase**
+   - Verify all evidence with specific citations
+   - Assign confidence tiers based on source quality
+   - Flag unverified estimates and assumptions
+
+3. **Analysis Phase**
+   - Model cascade and accountability patterns
+   - Perform sensitivity analysis on key parameters
+   - Identify weakest evidence chain links
+
+4. **Reporting Phase**
+   - Generate policy-actionable summaries
+   - Provide scenario analysis and counterfactuals
+   - Clearly frame as analysis, not adjudication
+
 ## Output Standards
 
 - Full markdown reports with changelog

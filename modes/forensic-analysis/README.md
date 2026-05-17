@@ -48,6 +48,30 @@ The Forensic Analysis mode is specialized for detailed investigation, trace anal
 
 ## Available Tools
 
+## Research-First Workflow
+
+When conducting forensic analysis:
+
+1. **Research Phase**
+   - Query Google or DuckDuckGo for forensic methodologies and best practices
+   - Gather incident response frameworks and checklists
+   - Review compliance and evidence handling standards
+
+2. **Evidence Collection Phase**
+   - Trace execution paths and data flows
+   - Document findings with exact file paths and line numbers
+   - Establish chain of custody for evidence items
+
+3. **Analysis Phase**
+   - Perform root cause analysis
+   - Map affected components and dependencies
+   - Quantify severity and impact
+
+4. **Reporting Phase**
+   - Generate forensic reports with findings hierarchy
+   - Include reproducible test cases
+   - Provide prioritized remediation guidance
+
 Forensic agents typically have access to:
 - read, search, codebase (core analysis)
 - web, fetch (reference gathering)

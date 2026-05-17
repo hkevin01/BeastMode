@@ -48,6 +48,31 @@ The Code Commenting mode specializes in adding clear, meaningful comments and do
 ### Good Comments
 - Explain WHY, not WHAT
 - Document design decisions
+- Include relevant constraints and assumptions
+
+## Research-First Workflow
+
+When adding comments:
+
+1. **Research Phase**
+   - Query Google or DuckDuckGo for best practices in NASA-style documentation
+   - Research domain-specific standards (safety-critical systems, cryptography, etc.)
+   - Gather reference implementations and style guides
+
+2. **Code Understanding Phase**
+   - Analyze algorithm purpose and complexity
+   - Identify mission-critical logic and edge cases
+   - Map pre/postconditions and failure modes
+
+3. **Documentation Phase**
+   - Add structured comments following NASA standards
+   - Document inputs, outputs, and constraints
+   - Explain design decisions and rationale
+
+4. **Verification Phase**
+   - Ensure comments match implementation
+   - Validate completeness of safety documentation
+   - Review clarity and accessibility
 - Clarify non-obvious code
 - Guide future maintainers
 - Provide practical examples

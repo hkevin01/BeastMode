@@ -48,6 +48,30 @@ Deliverable: Content-origin table
 - [ORIGIN UNKNOWN] flagging where needed
 
 ### RULE 5: Developer Extension Path (Explicit)
+
+## Research-First Workflow
+
+When auditing documentation:
+
+1. **Research Phase**
+   - Query Google or DuckDuckGo for documentation best practices in your domain
+   - Gather reference implementations and architecture patterns
+   - Review compliance and technical accuracy standards
+
+2. **Code Analysis Phase**
+   - Trace complete execution paths through codebase
+   - Identify all data transformations and side effects
+   - Extract actual behavior vs documented behavior
+
+3. **Documentation Audit Phase**
+   - Compare documentation against actual implementation
+   - Identify gaps, omissions, and inaccuracies
+   - Document evidence locations with file paths and line numbers
+
+4. **Correction Phase**
+   - Rewrite sections to match implementation
+   - Add missing technical details with examples
+   - Flag undocumented features or behaviors
 Required: Step-by-step technical guide including:
 - Exact file locations for creation/modification
 - Required data structure exports and types

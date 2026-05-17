@@ -39,3 +39,27 @@ The Code Analysis mode provides comprehensive, multi-dimensional code reviews co
 - Performance bottleneck identification
 - Best practices enforcement
 - Knowledge sharing and mentoring
+
+## Research-First Workflow
+
+When reviewing code:
+
+1. **Research Phase**
+   - Query Google or DuckDuckGo for current best practices in the language/framework
+   - Gather security advisories for identified vulnerabilities
+   - Review coding standards evolution
+
+2. **Context Phase**
+   - Understand the codebase structure
+   - Identify architectural patterns and conventions
+   - Map dependencies and interactions
+
+3. **Analysis Phase**
+   - Review code across all quality dimensions
+   - Identify issues by severity
+   - Cross-reference against standards and patterns
+
+4. **Feedback Phase**
+   - Provide specific, actionable recommendations
+   - Include references and best practice links
+   - Suggest code examples and patterns
