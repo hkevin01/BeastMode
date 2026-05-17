@@ -564,21 +564,28 @@ This ensures agent responses are grounded in current documentation and proven pa
 ### Mode Architecture
 
 - **Authoritative Source**: `/home/kevin/Projects/BeastMode/modes/*/`
-  - Complete agent definitions with detailed instructions
-  - README documentation for each mode
-  - Full research tool access (`web`, `fetch`, `browser`)
+  - Complete mode documentation with README files
+  - Workflow descriptions and use cases for each mode
+  - Reference material and learning resources
 
-- **Discovery Layer**: `/home/kevin/Projects/BeastMode/.github/agents/`
-  - Consolidated agent files for cross-project visibility
-  - Mirrors latest mode definitions
-  - 14 discoverable agents across 72 projects
+- **Discovery Layer** (Single Source of Agent Definitions): `/home/kevin/Projects/BeastMode/.github/agents/`
+  - 14 discoverable agent files
+  - Unified agent definitions with research tools
+  - Eliminates duplication in agent picker
+  - All projects discover from this single location
+
+**Why This Structure:**
+- `modes/` provides rich documentation about each specialist area
+- `.github/agents/` provides the single discoverable definition
+- This eliminates duplicate agents in the VS Code picker
+- One source of truth for agent behavior and capabilities
 
 ### Mode Access
 
-Browse modes at:
+Browse mode documentation at:
 ```
 modes/
-├── architecture-design/
+├── architecture-design/          (READMEs explain each mode)
 ├── automated-reasoning/
 ├── code-analysis/
 ├── code-commenting/
@@ -596,8 +603,13 @@ modes/
 └── test-automation/
 ```
 
+Discover agents from `.github/agents/` (14 unified definitions):
+- All agents include research tools (web/fetch/browser)
+- All follow research-first workflow pattern
+- Single agent picker entry per agent (no duplicates)
+
 > [!NOTE]
-> Select any mode via the VS Code Copilot Chat agent picker. All modes include research capabilities (web/fetch/browser) and follow research-first workflow patterns.
+> Select any agent via the VS Code Copilot Chat agent picker. All agents include research capabilities (web/fetch/browser) and follow research-first workflow patterns. The modes/ folder provides detailed documentation for each agent specialty.
 
 <p align="right">(<a href="#top">back to top ↑</a>)</p>
 
