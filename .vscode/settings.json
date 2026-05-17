@@ -1,7 +1,4 @@
 {
-  "chat.agentFilesLocations": {
-    ".github/agents": true
-  },
     "workbench.colorCustomizations": {
       "activityBar.activeBackground": "#125160",
       "activityBar.background": "#125160",
