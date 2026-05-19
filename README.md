@@ -72,13 +72,13 @@ cd /home/kevin/Projects/BeastMode
 
 ## Key Features
 
-| Icon | Feature | Description | Impact | Status |
+| <sub>Icon</sub> | <sub>Feature</sub> | <sub>Description</sub> | <sub>Impact</sub> | <sub>Status</sub> |
 |------|---------|-------------|--------|--------|
-| 🤖 | Shared BeastMode profile | Maintains one central instruction set for Copilot custom agents. | High | ✅ Stable |
-| 🧭 | Cross-project discovery | Supports loading custom agent files from a shared path in project settings. | High | ✅ Stable |
-| 🧰 | Expanded tool set | Includes modern agent toolsets (`agent`, `edit`, `execute`, `read`, `web`, and more). | High | ✅ Stable |
-| 📚 | Dual profile variants | Keeps modern `.agent.md` agent files plus a canonical `.md` profile variant. | Medium | ✅ Stable |
-| 🛡️ | GitHub standards baseline | Adds standard community files for contributions, security, and governance. | Medium | ✅ Stable |
+| <sub>🤖</sub> | <sub>Shared BeastMode profile</sub> | <sub>Maintains one central instruction set for Copilot custom agents.</sub> | <sub>High</sub> | <sub>✅ Stable</sub> |
+| <sub>🧭</sub> | <sub>Cross-project discovery</sub> | <sub>Supports loading custom agent files from a shared path in project settings.</sub> | <sub>High</sub> | <sub>✅ Stable</sub> |
+| <sub>🧰</sub> | <sub>Expanded tool set</sub> | <sub>Includes modern agent toolsets (`agent`, `edit`, `execute`, `read`, `web`, and more).</sub> | <sub>High</sub> | <sub>✅ Stable</sub> |
+| <sub>📚</sub> | <sub>Dual profile variants</sub> | <sub>Keeps modern `.agent.md` agent files plus a canonical `.md` profile variant.</sub> | <sub>Medium</sub> | <sub>✅ Stable</sub> |
+| <sub>🛡️</sub> | <sub>GitHub standards baseline</sub> | <sub>Adds standard community files for contributions, security, and governance.</sub> | <sub>Medium</sub> | <sub>✅ Stable</sub> |
 
 Additional highlights:
 - Google-first web research guidance with DuckDuckGo fallback if Google blocks automated requests.
@@ -183,12 +183,12 @@ Operationally, this means you can update behavior once in this repo and have pro
 
 ## Why This Over Alternatives
 
-| Approach | Strengths | Weaknesses | Why BeastMode Was Chosen |
+| <sub>Approach</sub> | <sub>Strengths</sub> | <sub>Weaknesses</sub> | <sub>Why BeastMode Was Chosen</sub> |
 |---------|-----------|------------|----------------------------|
-| Per-repo ad hoc prompts | Fast to start | High drift, hard to audit, repeated setup | BeastMode centralizes behavior and makes changes versioned |
-| Only `.github/copilot-instructions.md` | Good for always-on coding standards | Does not fully define agent persona/tool scope as a custom agent | BeastMode defines both behavior and tool permissions |
-| Personal user-level customizations only | Works across repos for one user | Not team-visible, weaker repository governance | BeastMode is repo-managed and shareable |
-| Extension-specific presets | Potentially rich features | Can be opaque and harder to customize deeply | BeastMode is plain-text, reviewable, and easy to evolve |
+| <sub>Per-repo ad hoc prompts</sub> | <sub>Fast to start</sub> | <sub>High drift, hard to audit, repeated setup</sub> | <sub>BeastMode centralizes behavior and makes changes versioned</sub> |
+| <sub>Only `.github/copilot-instructions.md`</sub> | <sub>Good for always-on coding standards</sub> | <sub>Does not fully define agent persona/tool scope as a custom agent</sub> | <sub>BeastMode defines both behavior and tool permissions</sub> |
+| <sub>Personal user-level customizations only</sub> | <sub>Works across repos for one user</sub> | <sub>Not team-visible, weaker repository governance</sub> | <sub>BeastMode is repo-managed and shareable</sub> |
+| <sub>Extension-specific presets</sub> | <sub>Potentially rich features</sub> | <sub>Can be opaque and harder to customize deeply</sub> | <sub>BeastMode is plain-text, reviewable, and easy to evolve</sub> |
 
 Tradeoff summary:
 
@@ -204,18 +204,18 @@ Tradeoff summary:
 
 Current core files in this repository:
 
-| Path | Purpose |
+| <sub>Path</sub> | <sub>Purpose</sub> |
 |------|---------|
-| `.github/agents/` | Workspace-discoverable custom agent files for VS Code Copilot chat. |
-| `modes/automated-reasoning/beastmode_kevin.md` | Canonical Beast Mode profile content variant. |
-| `modes/automated-reasoning/beastmode_kevin.agent.md` | Source modern custom-agent definition in mode folder. |
-| `README.md` | Project documentation. |
-| `.gitignore` | Ignore patterns for editor, build, env, and cache artifacts. |
-| `.gitattributes` | Line-ending normalization. |
-| `LICENSE` | MIT license. |
-| `CONTRIBUTING.md` | Contribution workflow and quality gate guidance. |
-| `SECURITY.md` | Vulnerability reporting policy. |
-| `CODE_OF_CONDUCT.md` | Community behavior standards. |
+| <sub>`.github/agents/`</sub> | <sub>Workspace-discoverable custom agent files for VS Code Copilot chat.</sub> |
+| <sub>`modes/automated-reasoning/beastmode_kevin.md`</sub> | <sub>Canonical Beast Mode profile content variant.</sub> |
+| <sub>`modes/automated-reasoning/beastmode_kevin.agent.md`</sub> | <sub>Source modern custom-agent definition in mode folder.</sub> |
+| <sub>`README.md`</sub> | <sub>Project documentation.</sub> |
+| <sub>`.gitignore`</sub> | <sub>Ignore patterns for editor, build, env, and cache artifacts.</sub> |
+| <sub>`.gitattributes`</sub> | <sub>Line-ending normalization.</sub> |
+| <sub>`LICENSE`</sub> | <sub>MIT license.</sub> |
+| <sub>`CONTRIBUTING.md`</sub> | <sub>Contribution workflow and quality gate guidance.</sub> |
+| <sub>`SECURITY.md`</sub> | <sub>Vulnerability reporting policy.</sub> |
+| <sub>`CODE_OF_CONDUCT.md`</sub> | <sub>Community behavior standards.</sub> |
 
 <details>
 <summary>Show GitHub community templates</summary>
@@ -283,13 +283,13 @@ Typical steps:
 
 ## Technology Stack
 
-| Technology | Purpose | Why Chosen | Alternatives |
+| <sub>Technology</sub> | <sub>Purpose</sub> | <sub>Why Chosen</sub> | <sub>Alternatives</sub> |
 |------------|---------|------------|--------------|
-| Markdown (`.md`) | Agent definitions and docs | Native rendering in GitHub and VS Code | JSON/YAML-only formats |
-| VS Code Custom Agents | Agent behavior packaging | First-class integration with chat tools and model picker | Prompt snippets only |
-| VS Code Settings | Cross-project discovery | Easy rollout via `.vscode/settings.json` | Manual per-session import |
-| Mermaid in README | Visual architecture and process docs | Native GitHub support and maintainability | Static images |
-| GitHub issue/PR templates | Collaboration quality | Standardized triage and review context | Ad hoc issue/PR descriptions |
+| <sub>Markdown (`.md`)</sub> | <sub>Agent definitions and docs</sub> | <sub>Native rendering in GitHub and VS Code</sub> | <sub>JSON/YAML-only formats</sub> |
+| <sub>VS Code Custom Agents</sub> | <sub>Agent behavior packaging</sub> | <sub>First-class integration with chat tools and model picker</sub> | <sub>Prompt snippets only</sub> |
+| <sub>VS Code Settings</sub> | <sub>Cross-project discovery</sub> | <sub>Easy rollout via `.vscode/settings.json`</sub> | <sub>Manual per-session import</sub> |
+| <sub>Mermaid in README</sub> | <sub>Visual architecture and process docs</sub> | <sub>Native GitHub support and maintainability</sub> | <sub>Static images</sub> |
+| <sub>GitHub issue/PR templates</sub> | <sub>Collaboration quality</sub> | <sub>Standardized triage and review context</sub> | <sub>Ad hoc issue/PR descriptions</sub> |
 
 <p align="right">(<a href="#top">back to top ↑</a>)</p>
 
@@ -458,10 +458,10 @@ The repository ships with a project-wide checker script:
 
 ### Exit Behavior
 
-| Exit Code | Meaning |
+| <sub>Exit Code</sub> | <sub>Meaning</sub> |
 |---|---|
-| `0` | No projects need updates and no autofix failures |
-| `2` | Remaining projects need changes or parsing failed |
+| <sub>`0`</sub> | <sub>No projects need updates and no autofix failures</sub> |
+| <sub>`2`</sub> | <sub>Remaining projects need changes or parsing failed</sub> |
 
 <details>
 <summary>Implementation Notes</summary>
@@ -478,12 +478,12 @@ The checker reads user settings and workspace settings, then applies precedence 
 
 ## Compatibility Notes
 
-| Area | Current Recommendation | Why |
+| <sub>Area</sub> | <sub>Current Recommendation</sub> | <sub>Why</sub> |
 |---|---|---|
-| Path format | Absolute paths only | Relative paths vary by workspace and can silently miss shared agents |
-| User-level location | `~/.copilot/agents` | Built-in user scope for cross-project discovery |
-| Settings shape | Object-map path entries | Most reliable behavior observed in this environment |
-| Workspace files | Allow JSONC comments/trailing commas | Common in real project settings files |
+| <sub>Path format</sub> | <sub>Absolute paths only</sub> | <sub>Relative paths vary by workspace and can silently miss shared agents</sub> |
+| <sub>User-level location</sub> | <sub>`~/.copilot/agents`</sub> | <sub>Built-in user scope for cross-project discovery</sub> |
+| <sub>Settings shape</sub> | <sub>Object-map path entries</sub> | <sub>Most reliable behavior observed in this environment</sub> |
+| <sub>Workspace files</sub> | <sub>Allow JSONC comments/trailing commas</sub> | <sub>Common in real project settings files</sub> |
 
 > [!IMPORTANT]
 > If one project still only shows a subset of agents, run checker autofix first, then clear Copilot cache and reopen the window.
@@ -531,24 +531,24 @@ BeastMode now provides **16 specialized agent modes**, each optimized for specif
 
 ### Available Modes
 
-| Mode | Focus Area | Key Capability |
+| <sub>Mode</sub> | <sub>Focus Area</sub> | <sub>Key Capability</sub> |
 |------|-----------|-----------------|
-| **Automated Reasoning** | Autonomous problem-solving | Extended research + validation |
-| **Architecture Design** | System architecture | Microservices & scalability |
-| **Code Analysis** | Comprehensive code review | Multi-dimensional quality assessment |
-| **Code Commenting** | NASA-style documentation | Mission-critical code clarity |
-| **Code Refactoring** | Code structure improvement | Design patterns & maintainability |
-| **Dependency Auditing** | Dependency security | CVE identification & safe upgrades |
-| **Documentation Integrity** | Code-traceable docs | Implementation truthfulness |
-| **Forensic Analysis** | Detailed investigation | Evidence-based findings |
-| **Legacy Modernization** | Technology upgrades | Zero-downtime migration |
-| **Performance Optimization** | System efficiency | Bottleneck elimination |
-| **Product Documentation** | Domain-specific docs | Audience-targeted clarity |
-| **Project Scaffolding** | Framework setup | Language-agnostic structure |
-| **README Documentation** | Project README | Multi-section enhancement |
-| **Security Analysis** | Threat identification | Vulnerability assessment |
-| **Systemic Risk Analysis** | Quantitative risk | Policy-level reporting |
-| **Test Automation** | Testing strategy | Coverage planning & CI/CD |
+| <sub>**Automated Reasoning**</sub> | <sub>Autonomous problem-solving</sub> | <sub>Extended research + validation</sub> |
+| <sub>**Architecture Design**</sub> | <sub>System architecture</sub> | <sub>Microservices & scalability</sub> |
+| <sub>**Code Analysis**</sub> | <sub>Comprehensive code review</sub> | <sub>Multi-dimensional quality assessment</sub> |
+| <sub>**Code Commenting**</sub> | <sub>NASA-style documentation</sub> | <sub>Mission-critical code clarity</sub> |
+| <sub>**Code Refactoring**</sub> | <sub>Code structure improvement</sub> | <sub>Design patterns & maintainability</sub> |
+| <sub>**Dependency Auditing**</sub> | <sub>Dependency security</sub> | <sub>CVE identification & safe upgrades</sub> |
+| <sub>**Documentation Integrity**</sub> | <sub>Code-traceable docs</sub> | <sub>Implementation truthfulness</sub> |
+| <sub>**Forensic Analysis**</sub> | <sub>Detailed investigation</sub> | <sub>Evidence-based findings</sub> |
+| <sub>**Legacy Modernization**</sub> | <sub>Technology upgrades</sub> | <sub>Zero-downtime migration</sub> |
+| <sub>**Performance Optimization**</sub> | <sub>System efficiency</sub> | <sub>Bottleneck elimination</sub> |
+| <sub>**Product Documentation**</sub> | <sub>Domain-specific docs</sub> | <sub>Audience-targeted clarity</sub> |
+| <sub>**Project Scaffolding**</sub> | <sub>Framework setup</sub> | <sub>Language-agnostic structure</sub> |
+| <sub>**README Documentation**</sub> | <sub>Project README</sub> | <sub>Multi-section enhancement</sub> |
+| <sub>**Security Analysis**</sub> | <sub>Threat identification</sub> | <sub>Vulnerability assessment</sub> |
+| <sub>**Systemic Risk Analysis**</sub> | <sub>Quantitative risk</sub> | <sub>Policy-level reporting</sub> |
+| <sub>**Test Automation**</sub> | <sub>Testing strategy</sub> | <sub>Coverage planning & CI/CD</sub> |
 
 ### Research-First Workflow (All Modes)
 
@@ -620,11 +620,11 @@ Discover agents from `.github/agents/` (14 unified definitions):
 
 BeastMode was developed in an environment with historical proximity to military/defense sector technical discussions. Public reporting has documented the following:
 
-| Context | Public Reference | Verification Status | Relevance to BeastMode |
+| <sub>Context</sub> | <sub>Public Reference</sub> | <sub>Verification Status</sub> | <sub>Relevance to BeastMode</sub> |
 |---------|------------------|-------------------|------------------------|
-| PlayStation network monitoring in defense/intelligence contexts | Multiple news reports (2010-2015) | Verified public reporting | Historical backdrop; no bearing on code |
-| AI agent patterns in autonomous systems research | Government research papers, DARPA | Publicly available | Informed workflow design philosophy |
-| Autonomous reasoning for mission-critical systems | Published in open literature | Academic consensus | Inspired rigorous validation rules |
+| <sub>PlayStation network monitoring in defense/intelligence contexts</sub> | <sub>Multiple news reports (2010-2015)</sub> | <sub>Verified public reporting</sub> | <sub>Historical backdrop; no bearing on code</sub> |
+| <sub>AI agent patterns in autonomous systems research</sub> | <sub>Government research papers, DARPA</sub> | <sub>Publicly available</sub> | <sub>Informed workflow design philosophy</sub> |
+| <sub>Autonomous reasoning for mission-critical systems</sub> | <sub>Published in open literature</sub> | <sub>Academic consensus</sub> | <sub>Inspired rigorous validation rules</sub> |
 
 > [!IMPORTANT]
 > **Verification Note:** The above references are documented in publicly available sources and news archives. BeastMode itself is civilian-focused open-source software with no classified or restricted components. This project is licensed under MIT and publicly distributed.
@@ -638,9 +638,9 @@ BeastMode was developed in an environment with historical proximity to military/
 
 ## Development Status
 
-| Version | Stability | Coverage | Known Limitations |
+| <sub>Version</sub> | <sub>Stability</sub> | <sub>Coverage</sub> | <sub>Known Limitations</sub> |
 |---------|-----------|----------|-------------------|
-| 3.1 profile set | Stable | Profile files and standards docs | No executable test suite in this repo |
+| <sub>3.1 profile set</sub> | <sub>Stable</sub> | <sub>Profile files and standards docs</sub> | <sub>No executable test suite in this repo</sub> |
 
 ```mermaid
 pie title Repository Content Composition
@@ -668,11 +668,11 @@ gantt
     Add profile consistency check script   :p4, 2026-05-20, 2026-06-10
 ```
 
-| Phase | Goals | Target | Status |
+| <sub>Phase</sub> | <sub>Goals</sub> | <sub>Target</sub> | <sub>Status</sub> |
 |------|-------|--------|--------|
-| Foundation | Consolidate profile files and baseline docs | Completed | ✅ |
-| Standards | Add GitHub community and repository hygiene files | Completed | ✅ |
-| Quality Automation | Add markdown lint and consistency checks | Planned | 🟡 |
+| <sub>Foundation</sub> | <sub>Consolidate profile files and baseline docs</sub> | <sub>Completed</sub> | <sub>✅</sub> |
+| <sub>Standards</sub> | <sub>Add GitHub community and repository hygiene files</sub> | <sub>Completed</sub> | <sub>✅</sub> |
+| <sub>Quality Automation</sub> | <sub>Add markdown lint and consistency checks</sub> | <sub>Planned</sub> | <sub>🟡</sub> |
 
 <p align="right">(<a href="#top">back to top ↑</a>)</p>
 
